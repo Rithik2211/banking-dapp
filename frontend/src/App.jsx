@@ -5,6 +5,9 @@ import HomePage from './pages/HomePage';
 import NavBar from './components/NavigationBar';
 import { ToastContainer } from "react-toastify";
 import { DbankProvider } from './components/DbankContext';
+import DepositPage from './pages/DepositPage';
+import TransferPage from './pages/TransferPage';
+import WidthDrawPage from './pages/WidthDrawPage';
 
 function App() {
 
@@ -27,6 +30,9 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/deposit" element={<DepositPage />} />
+          <Route path="/transfer" element={<TransferPage />} />
+          <Route path="/widthdraw" element={<WidthDrawPage />} />
         </Routes>
       </BrowserRouter>
     </DbankProvider>

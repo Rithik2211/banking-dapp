@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { defiFeatures, features } from '../utils/data';
+import DbankContext from '../components/DbankContext';
 
 const HomePage = () => {
+  const {account, ConnectWallet} = useContext(DbankContext)
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       {/* Hero Section */}
@@ -9,8 +11,6 @@ const HomePage = () => {
         <img
           src="/dash.png"
           alt="Dash background"
-          layout="fill"
-          objectFit="cover"
           className="rounded-lg"
         />
         <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-white p-6">
@@ -22,7 +22,7 @@ const HomePage = () => {
             <input
               type="text"
               placeholder="Search for interest rates and products"
-              className="w-full px-6 py-3 rounded-full text-black dark:text-white outline-none"
+              className="w-full px-6 py-3 rounded-full text-black outline-none"
             />
             <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#04c052] text-black px-6 py-2 rounded-full">
               Search
@@ -41,8 +41,6 @@ const HomePage = () => {
                 <img
                   src={creator.image}
                   alt={creator.title}
-                  layout="fill"
-                  objectFit="cover"
                   className="rounded-lg"
                 />
               </div>
@@ -73,7 +71,10 @@ const HomePage = () => {
       {/* Call to Action */}
       <div className="text-center py-16">
         <h2 className="text-3xl font-bold mb-8">Ready to join the DeFi-banking?</h2>
-        <button variant="contained" className='bg-[#0583dd] hover:bg-[#0583dd]-500 font-semibold dark:text-white px-5 py-2 rounded-full text-md hover:bg-opacity-90' > Connect Wallet </button>
+        <button 
+          onClick={ConnectWallet} 
+          className='bg-[#0583dd] hover:bg-[#0583dd]-500 font-semibold dark:text-white px-5 py-2 rounded-full text-md hover:bg-opacity-90' 
+          > {account ? 'Connected' : 'Connect Wallet' }</button>
       </div>
     </div>
   )

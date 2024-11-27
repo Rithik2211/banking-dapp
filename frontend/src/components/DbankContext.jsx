@@ -13,13 +13,15 @@ export const DbankProvider = ({children}) => {
     const ConnectWallet = async() => {
         if(!window.ethereum){
             toast.warning("MetaMask not installed");
+            alert("MetaMask not installed");
         }
         else{
             try{
                 const provider = new ethers.BrowserProvider(window.ethereum);
                 const signer = await provider.getSigner();
                 const address = await signer.getAddress();
-                toast.success(`Connected: ${Address}`);
+                // toast.success(`Connected: ${address}`);
+                // console.log(`Connected: ${address}`)
 
                 setAccount(address)
                 const contract = new ethers.Contract(

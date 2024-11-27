@@ -33,7 +33,7 @@ const NavBar = () => {
 
     const DisplayAccount = () => {
         return (
-            <p className='text-sm'>Connected: {account}</p>
+            <p className='text-sm'>Connected: {account.slice(0, 6)}.. {account.slice(-4)}</p>
         )
     }
 
@@ -51,7 +51,7 @@ const NavBar = () => {
             }
             <button onClick={ConnectWallet}
                 className='bg-[#0583dd] hover:bg-[#0583dd]-500 font-semibold text-white px-4 py-2 rounded-full text-md hover:bg-opacity-90 flex flex-row gap-2' > 
-                <img src='/metamask.svg' alt='metamask' className='w-6 h-6'/>{account ? DisplayAccount() : "Connect Wallet" }
+                <img src='/metamask.svg' alt='metamask' className='w-6 h-6'/>{account ? `${account.slice(0, 6)}.. ${account.slice(-4)}` : "Connect Wallet" }
             </button>
         </div>
       </div>
