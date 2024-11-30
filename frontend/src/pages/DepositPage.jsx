@@ -88,8 +88,8 @@ const DepositPage = () => {
     }
 
     return (
-        <div className="h-[88vh] flex flex-col lg:flex-row md:flex-row">
-          <div className="flex-1 p-6 border-r border-gray-700 ">
+        <div className="flex flex-col lg:flex-row md:flex-row">
+          <div className="flex-1 p-6 border-b lg:border-r md:border-r border-gray-700 ">
             <Card classNae="h-full shadow-lg rounded-lg p-6" sx={{backgroundColor: "black"}}>
               <h2 className="text-2xl text-white font-bold mb-4">Deposit Funds</h2>
               <div className="space-y-10 text-white">
@@ -97,7 +97,7 @@ const DepositPage = () => {
                   <p className="font-medium">Available Balance</p>
                   <p className="text-3xl font-bold">{account ? balance ? `${Balance} Eth` : "Loading..." : '0.00 ETH'}</p>
                 </div>
-                <TextField 
+                <TextField
                     id="outlined-basic" 
                     label="Name" 
                     fullWidth
@@ -138,7 +138,7 @@ const DepositPage = () => {
             <Card className="h-full shadow-lg rounded-lg p-6" sx={{backgroundColor: "black"}}>
               <h2 className="text-2xl font-bold mb-4 text-white">Deposit History</h2>
               <div className="space-y-4 text-white">
-                { deposit ? 
+                { deposit?.length > 0 ? 
                 deposit.map((item, index) => (
                   <div key={index} className="border-b border-gray-200 pb-4">
                     <div className="flex justify-between items-center">
@@ -155,7 +155,7 @@ const DepositPage = () => {
                 ))
                 : 
                 <div className="border border-gray-500 p-4">
-                    <p className="font-medium">No Withdrawal Request Found!</p>
+                    <p className="font-medium">No Deposit History Found!</p>
                 </div>
                 }
             </div>
