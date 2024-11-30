@@ -70,14 +70,14 @@ const TransferPage = () => {
 
 
   return (
-    <div className="flex flex-col lg:flex-row md:flex-row">
-      <div className="flex-1 p-6 border-b lg:border-r md:border-r border-gray-700 ">
+    <div className="flex md:h-[88vh] flex-col lg:flex-row md:flex-row">
+      <div className="flex-1 p-6 border-b md:border-r border-gray-700 ">
         <Card className="h-full shadow-lg rounded-lg p-6" sx={{backgroundColor: "black"}}>
           <h2 className="text-2xl text-white font-bold mb-4">Transfer Funds</h2>
           <div className="space-y-10 text-white">
             <div className="bg-gray-500 p-4 rounded-lg">
               <p className="font-medium">Available Balance</p>
-              <p className="text-3xl font-bold">0.00 ETH</p>
+              <p className="text-3xl font-bold">{account ? balance ? `${Balance} Eth` : "Loading..." : '0.00 ETH'}</p>
             </div>
             <TextField 
               id="outlined-basic" 
@@ -92,6 +92,8 @@ const TransferPage = () => {
                   '& .MuiInputLabel-root': { color: 'white' },
                   '& .MuiOutlinedInput-input': { color: 'white' }
                 }}
+              value={receiver}
+              onChange={(e) => setReceiver(e.target.value)}
             />
             <TextField 
                 id="outlined-basic" 
@@ -106,8 +108,10 @@ const TransferPage = () => {
                     '& .MuiInputLabel-root': { color: 'white' },
                     '& .MuiOutlinedInput-input': { color: 'white' }
                   }}
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
             />
-            <Button fullWidth variant="contained" color="secondary" > Transfer </Button>
+            <Button fullWidth variant="contained" color="secondary" onClick={() => TransferAmount()} > Transfer </Button>
           </div>
         </Card>
       </div>

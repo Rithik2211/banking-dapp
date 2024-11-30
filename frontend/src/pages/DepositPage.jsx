@@ -88,8 +88,8 @@ const DepositPage = () => {
     }
 
     return (
-        <div className="flex flex-col lg:flex-row md:flex-row">
-          <div className="flex-1 p-6 border-b lg:border-r md:border-r border-gray-700 ">
+        <div className="flex md:h-[88vh] flex-col lg:flex-row md:flex-row">
+          <div className="flex-1 p-6 border-r md:border-b border-gray-700 ">
             <Card classNae="h-full shadow-lg rounded-lg p-6" sx={{backgroundColor: "black"}}>
               <h2 className="text-2xl text-white font-bold mb-4">Deposit Funds</h2>
               <div className="space-y-10 text-white">

@@ -1,13 +1,8 @@
 import React, { useContext } from 'react';
 import DbankContext from './DbankContext';
+import { useNavigate } from 'react-router-dom';
 
 export const navData = [
-    { 
-        label: 'Home',
-        href: '/',
-        style: 'text-white text-md',
-        img : ''
-    },
     { 
         label: 'Deposit',
         href: '/deposit',
@@ -29,19 +24,18 @@ export const navData = [
 ]
 
 const NavBar = () => {
-    const {account, ConnectWallet} = useContext(DbankContext)
+    const {account, ConnectWallet} = useContext(DbankContext);
+    let navigate = useNavigate();
 
-    const DisplayAccount = () => {
-        return (
-            <p className='text-sm'>Connected: {account.slice(0, 6)}.. {account.slice(-4)}</p>
-        )
+    const HandleNavigate = (route) => {
+        navigate(route);
     }
 
   return (
     <div className='flex justify-center items-center sticky z-10 text-white font-[1rem] h-[55px] mt-[-20px] shadow-sm rounded-[30px]'>
       <div className='flex flex-row justify-between items-center z-1 w-full h-full'>
         <div className='text-white pl-5'>
-           <h1 className='font-semibold text-xl'>Decentalized Banking</h1>
+           <h1 className='font-semibold text-xl' onClick={() => HandleNavigate('/')}>Decentalized Banking</h1>
         </div>
         <div className="flex justify-around items-center w-[600px] h-[40px] flex-wrap mr-5">
             {

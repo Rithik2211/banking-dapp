@@ -8,7 +8,7 @@ const WithdrawPage = () => {
 
   const [allwithdraws, setAllwithdraws] = useState([]);
   const [WithdrawMade, setWithdrawMade] = useState();
-  const [amount, setAmmount] = useState(0);
+  const [amount, setAmount] = useState(0);
   
   useEffect(()=> {
     const getAllWithdrawals = async() => {
@@ -100,8 +100,8 @@ const WithdrawPage = () => {
   console.log("allwithdraws",allwithdraws)
 
   return (
-    <div className="flex flex-col lg:flex-row md:flex-row">
-      <div className="flex-1 p-6 border-b lg:border-r md:border-r border-gray-700 ">
+    <div className="flex md:h-[88vh] flex-col lg:flex-row md:flex-row">
+      <div className="flex-1 p-6 border-r md:border-b border-gray-700 ">
         <Card className="h-full shadow-lg rounded-lg p-6" sx={{backgroundColor: "black"}}>
           <h2 className="text-2xl text-white font-bold mb-4">Withdraw Funds</h2>
           <div className="space-y-10 text-white">
@@ -122,9 +122,11 @@ const WithdrawPage = () => {
                   '& .MuiInputLabel-root': { color: 'white' },
                   '& .MuiOutlinedInput-input': { color: 'white' }
                 }}
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
             />
-            <Button fullWidth variant="contained" onClick={RequestWidthdraw} > Withdraw </Button>
-            <Button fullWidth variant="contained" color="success" onClick={ClaimWithdraw} > Claim Amount Widthdrawn </Button>
+            <Button fullWidth variant="contained" onClick={() => RequestWidthdraw()} > Withdraw </Button>
+            <Button fullWidth variant="contained" color="success" onClick={() => ClaimWithdraw()} > Claim Amount Widthdrawn </Button>
           </div>
         </Card>
       </div>
