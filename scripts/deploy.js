@@ -1,14 +1,11 @@
 const hre = require("hardhat");
 
 async function main() {
-    const [deployer] = await hre.ethers.getSigners();
-    console.log("Deploying the contracts with the account:",
-        await deployer.getAddress()
-    );
-    const Dbank = await hre.ethers.getContractFactory("Dbank");
-    const dbank = await Dbank.deploy();
-    await dbank.deployed();
-    console.log("Dbank deployed to:", dbank.address);
+  const Dbank = await hre.ethers.getContractFactory("Dbank");
+  const dbank = await Dbank.deploy();
+  await dbank.waitForDeployment();
+  const dbankAddress = await dbank.getAddress();
+  console.log("Dbank deployed to:", dbankAddress);
 }
 
 main().catch((error) => {

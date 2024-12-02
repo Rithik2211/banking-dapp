@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import { defiFeatures, features } from '../utils/data';
 import DbankContext from '../components/DbankContext';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const {account, ConnectWallet} = useContext(DbankContext)
+
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       {/* Hero Section */}
@@ -14,7 +16,7 @@ const HomePage = () => {
           className="rounded-lg"
         />
         <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center text-white p-6">
-          <h1 className="text-5xl font-bold mb-4">Welcome to Decentralized Bank</h1>
+          <h1 className="text-5xl font-bold mb-4">Welcome to Banking that works for Everyone, Everywhere.</h1>
           <p className="text-lg mb-8 text-center max-w-3xl">
             Share your decentralized finance journey! From seamless global transfers to staking rewards and financial growth, inspire others to take control of their finances with the power of DeFi!
           </p>

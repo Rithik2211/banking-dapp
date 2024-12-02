@@ -121,20 +121,40 @@ contract Dbank  {
 
   
     function checkBalance() public view returns (uint256) {
+        if (balances[msg.sender] == 0) {
+            return 0;
+        }
         return balances[msg.sender];
     }
-    function checkpendings() public view returns (uint256) {
-        return pendingPayments[msg.sender].amount;
+    function checkpendings() public view returns (PendingWithdrawls memory) {
+        if (!pendingPayments[msg.sender].isPending) {
+            return PendingWithdrawls(0, 0, false);
         }
-    //views
-     function getAlltransfers() public view returns (Transfer[] memory) {
-        return tranfers[msg.sender];
-    }   
-      function getAllDepositss() public view returns (Deposit[] memory) {
-        return deposits[msg.sender];
+        return pendingPayments[msg.sender];
     }
-         function getAllWithdraws() public view returns (Withdraw[] memory) {
-        return withdraws[msg.sender];
+     function getAlltransfers() public view returns (Transfer[] memory) {
+        Transfer[] memory userTransfers = new Transfer[](tranfers[msg.sender].length);
+        if (tranfers[msg.sender].length == 0) {
+            return userTransfers;
+        }
+        userTransfers = tranfers[msg.sender];
+        return userTransfers;
+    }
+    function getAllDepositss() public view returns (Deposit[] memory) {
+        Deposit[] memory userDeposits = new Deposit[](deposits[msg.sender].length);
+        if (deposits[msg.sender].length == 0) {
+            return userDeposits;
+        }
+        userDeposits = deposits[msg.sender];
+        return userDeposits;
+    }
+    function getAllWithdraws() public view returns (Withdraw[] memory) {
+        Withdraw[] memory userWithdraws = new Withdraw[](withdraws[msg.sender].length);
+        if (withdraws[msg.sender].length == 0) {
+            return userWithdraws;
+        }
+        userWithdraws = withdraws[msg.sender];
+        return userWithdraws;
     }
 
 }

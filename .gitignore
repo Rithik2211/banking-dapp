@@ -1,6 +1,9 @@
 node_modules
 .env
-
+gas-report.txt
+coverage
+coverage.json
+.env.*
 # Hardhat files
 /cache
 /artifacts
